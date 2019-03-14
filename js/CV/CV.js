@@ -2,7 +2,7 @@ import "../Storage";
 import {updateInfoDIV} from "../Modules";
 
 ///////////////////////////////////////////////////////////////////////////
-/*    
+/*
 get the pixel location at the center of the grid cell div
 and match it to the pixel location in the PixelBuffer linear list
 call a looping method that scans the grid
@@ -98,10 +98,11 @@ export function CV(scannedPixels) {
         avg = (avg_0 + avg_1 + avg_2) / 3;
         // decide if pixel color should be black or white
         //based on avg function
-        if (avg > 256 / 2 + threshold) {
+        if (avg > 85 + threshold) {
             //black
             pixelCol = 0;
-        } else if (avg < 256 / 2 - threshold) {
+            //} else if (avg < 256 / 2 - threshold) {
+        } else if (avg < 85 - threshold) {
             //white
             pixelCol = 1;
         } else {
