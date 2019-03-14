@@ -25,8 +25,8 @@ export function scanArrayMaker() {
   for (let outCols = 0; outCols < camCanvas.height; outCols += ratY * 4) {
     for (let outRows = camCanvas.width; outRows > 0; outRows -= ratX * 4) {
       //inner loops create the 4x4 points of the brick itself
-      for (let inCols = 0; inCols < ratY * 4; inCols += ratY) {
-        for (let inRows = 0; inRows < ratX * 4; inRows += ratX) {
+      for (let inCols = 0; inCols <= ratY * 3; inCols += (ratY * 0.95)) {
+        for (let inRows = 0; inRows <= ratX * 3; inRows += (ratX * 0.95)) {
           //push the location into array
           initialScannerGridArr.push([outRows - inRows, outCols + inCols]);
         }
@@ -81,8 +81,8 @@ export function MatrixTransform(gridCorners) {
     );
     */
     dstPt = perspTres.transform(
-      initialScannerGridArr[i][0],
-      initialScannerGridArr[i][1]
+        initialScannerGridArr[i][0],
+        initialScannerGridArr[i][1]
     );
     // Draw the grid pnt and put it in an array
     svgPntsArray.push(drawPnt(dstPt, "magenta", i));
@@ -110,11 +110,11 @@ export function MatrixTransform(gridCorners) {
 function getPos(divPos) {
   // yay readability
   for (
-    var lx = 0, ly = 0;
-    divPos != null;
-    lx += divPos.offsetLeft,
-      ly += divPos.offsetTop,
-      divPos = divPos.offsetParent
+      var lx = 0, ly = 0;
+      divPos != null;
+      lx += divPos.offsetLeft,
+          ly += divPos.offsetTop,
+          divPos = divPos.offsetParent
   );
   return [lx, ly];
 }
@@ -127,7 +127,7 @@ export function drawPnt(dstPt, color, text) {
 
   //create visuals points on canvas for ref and add to array
   var thisPnt = svgKeystone.appendChild(
-    svgCircle(dstPt, color, 1.5, 0.5, "#000000", 0.3)
+      svgCircle(dstPt, color, 1.5, 0.5, "#000000", 0.3)
   );
   return thisPnt;
 
