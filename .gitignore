@@ -5,7 +5,7 @@ bin/
 .DS_Store
 .ds_store
 .cache/
-dist/
+dist/*
 node_modules/
 dist
 dist/
